@@ -1,0 +1,14 @@
+{
+   "type" : "ai_pack",
+   "actions" : [
+      "stonehearth:actions:combat:attack:ranged:from_current_location",
+      "stonehearth:actions:combat:attack:ranged:move_to_targetable_location",
+      "stonehearth:actions:combat:attack:ranged:path_to_target",
+      "startermod_class:actions:combat:raise_dead",
+      "stonehearth:actions:combat:idle:kite"
+   ],
+   "observers": [],
+   "ai_packs": [
+      "stonehearth:ai_pack:combat"
+   ]
+}

@@ -1,0 +1,26 @@
+{
+   "jobs": {
+      "necromancer" : {
+         "necronomicon": {
+            "display_name": "💀 Necronomicon 💀",
+            "description": "Book of the dead, required to promote a hearthling to a Necromancer."
+         },
+         "necromancer_description" : {
+            "display_name": "Necromancer",
+            "description": "Raises the dead to fight for the living.",
+            "requirements": "No requirements"
+         },
+         "necromancer_outfit": {
+            "display_name": "Necromancer's Robes",
+            "description": "Unholy garb worn by those who raise the dead."
+         }
+      }
+   },
+   "ai": {
+      "actions": {
+         "status_text": {
+            "raise_dead": "Raising the dead to fight [name(data.target)]"
+         }
+      }
+   }
+}

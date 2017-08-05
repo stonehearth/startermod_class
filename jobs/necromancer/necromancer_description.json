@@ -1,0 +1,38 @@
+{
+   "type": "job",
+   "enabled": true,
+   "job_id": "necromancer",
+   "display_order": 2,
+   "alias": "startermod_class:jobs:necromancer",
+   "display_name": "i18n(startermod_class:jobs.necromancer.necromancer_description.display_name)",
+   "controller": "startermod_class:class:necromancer",
+   "description": "i18n(startermod_class:jobs.necromancer.necromancer_description.description)",
+   "requirements": "i18n(startermod_class:jobs.necromancer.necromancer_description.requirements)",
+   "talisman_uri": "startermod_class:necromancer:talisman",
+   "default_stance": "aggressive",
+   "abilities": "file(necromancer_abilities)",
+   "equipment": {
+      "torso": "file(necromancer_outfit)",
+      "mainhand": "startermod_class:weapons:necronomicon"
+   },
+   "roles": "necromancer_job combat",
+   "promotion_activity_name": "promote_necromancer",
+   "task_groups": [
+      "stonehearth:task_group:common_tasks",
+      "stonehearth:task_group:restock",
+      "stonehearth:task_group:healing",
+      "stonehearth:task_group:rescue",
+      "stonehearth:task_group:patrolling"
+   ],
+   "icon": "file(images/icon.png)",
+   "parent_level_requirement": 0,
+   "initial_num_attended_hearthlings": 4,
+   "parent_job": "stonehearth:jobs:herbalist",
+   "xp_rewards": {
+      "heal_entity": 2,
+      "town_protection": 1
+   },
+   "max_level": 6,
+   "level_data": {
+   }
+}

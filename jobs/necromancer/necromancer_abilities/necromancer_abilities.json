@@ -1,0 +1,30 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "injected_ai": {
+            "ai_packs": [
+               "stonehearth:ai_pack:patrolling",
+               "stonehearth:ai_pack:wimpy",
+               "stonehearth:ai_pack:panic:flee",
+               "stonehearth:ai_pack:combat_control",
+               "stonehearth:ai_pack:healing",
+               "startermod_class:ai_pack:necromancer_combat"
+            ]
+         },
+         "military_score": 10
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "riase_skeleton",
+            "effect": "combat_1h_heal",
+            "active_frame": 40,
+            "target_armor_multiplier": 0.5,
+            "cooldown": 10000,
+            "priority": 0
+         }
+      ]
+   }
+}

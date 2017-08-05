@@ -1,0 +1,25 @@
+{
+   "type" : "recipe",
+   "work_units": 10,
+   "recipe_name" : "i18n(startermod_class:jobs.necromancer.necronomicon.display_name)",
+   "description" : "i18n(startermod_class:jobs.necromancer.necronomicon.description)",
+   "flavor" : "Sadness",
+   "portrait": "/stonehearth/jobs/cleric/cleric_tome/cleric_tome.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement" : 0,
+   "ingredients": [
+      {
+         "material": "leather resource",
+         "count": 1
+      },
+      {
+         "material": "food meat raw",
+         "count": 1
+      }
+   ],
+  "produces": [
+      {
+         "item": "startermod_class:necromancer:talisman"
+      }
+   ]
+}

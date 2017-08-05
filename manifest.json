@@ -1,0 +1,22 @@
+{
+   "info" : {
+      "name" : "startermod_class",
+      "version" : 3
+   },
+   "default_locale": "en",
+   "aliases" : {
+      "actions:combat:raise_dead": "file(ai/actions/combat/raise_dead_action.lua)",
+      "necromancer:outfit": "file(jobs/necromancer/necromancer_outfit)",
+      "necromancer:talisman": "file(jobs/necromancer/necronomicon/necronomicon_talisman.json)",
+      "jobs:necromancer": "file(jobs/necromancer/necromancer_description.json)",
+      "weapons:necronomicon": "file(jobs/necromancer/necronomicon)",
+      "ai_pack:necromancer_combat": "file(ai/packs/necromancer_combat_ai_pack.json)"
+   },
+   "mixintos" : {
+      "stonehearth/jobs/herbalist/recipes/recipes.json" : "file(recipes/recipes.json)",
+      "stonehearth/jobs/index.json" : "file(jobs/index.json)"
+   },
+   "controllers" : {
+      "class:necromancer": "file(jobs/necromancer/necromancer.lua)"
+   }
+}
