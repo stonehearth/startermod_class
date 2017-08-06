@@ -74,14 +74,32 @@ function RaiseDead:run(ai, entity, args)
    -- the target might die when we attack them, so unprotect now!
    ai:unprotect_argument(target)
 
-   -- Raise the dead!
-   self:raise_dead(entity)
+   -- this is a timer so the skeleton is not raised right at the first frame of the animation
+   self._raise_timers = {}
+   self:_add_raise_timer(entity, target, self._attack_info.active_frame * 33.3) --1 frame is ~33.3ms (or 1000/33)
 
-   -- Play the combat_1h_heal effect.
-   ai:execute('stonehearth:run_effect', { effect = "combat_1h_heal" })
+   -- Show some particles effects.
+   radiant.effects.run_effect(entity, "stonehearth:effects:buff_tonic_stamina_added")
+   -- Play the animation found in the json.
+   ai:execute('stonehearth:run_effect', { effect = self._attack_info.effect })
+end
+
+function RaiseDead:_add_raise_timer(entity, target, time_to_raise)
+   local raise_timer = stonehearth.combat:set_timer("RaiseDead raise", time_to_raise, function()
+      -- Raise the dead!
+      self:raise_dead(entity)
+   end)
+   table.insert(self._raise_timers, raise_timer)
 end
 
 function RaiseDead:stop(ai, entity, args)
+   if self._raise_timers then
+      for _, timer in ipairs(self._raise_timers) do
+         timer:destroy()
+      end
+      self._raise_timers = nil
+   end
+
    self._attack_info = nil
 end
 
@@ -99,7 +117,9 @@ function RaiseDead:raise_dead(entity)
 
    -- Information about the monster we want to spawn.
    local skeleton_info = {
-      tuning = 'stonehearth:monster_tuning:undead:insane_undead',
+      --this tuning file is exactly the same as the 'insane_undead' tuning
+      --except this one does not have loot, avoiding dropping those items
+      tuning = 'startermod_class:monster_tuning:undead:necromancer_undead',
       from_population = {
          location = Point3(0,0,0),
          role = 'skeleton'
@@ -117,14 +137,29 @@ function RaiseDead:raise_dead(entity)
 
    -- Switch the player_id of the spawned skeleton to be the same as
    -- the player_id of the heathling who spawned it.
-   radiant.entities.set_player_id(spawned_monsters[1], player_id)
+   radiant.entities.set_player_id(skeleton, player_id)
+
+   --a cool summon effect in the skeleton
+   radiant.effects.run_effect(skeleton, "stonehearth:effects:death")
 
    -- Set a timer to despawn the skeleton after a time to avoid filling the world with skeletons.
    stonehearth.calendar:set_timer('skeleton despawn', 1000, function()
       if skeleton and skeleton:is_valid() then
+         self:remove_items_from_skeleton(skeleton)
+         --0 health to kill it
          radiant.entities.set_health(skeleton, 0)
       end
    end)
+end
+
+function RaiseDead:remove_items_from_skeleton(skeleton)
+   --this is necessary as even though they had their loot removed from the tuning file,
+   --they would still drop the item in their hands
+   local equipment_component = skeleton:get_component('stonehearth:equipment')
+   local items = equipment_component:get_all_items()
+   for key, item in pairs(items) do
+      equipment_component:unequip_item(item)
+   end
 end
 
 return RaiseDead

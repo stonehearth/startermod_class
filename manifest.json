@@ -10,7 +10,8 @@
       "necromancer:talisman": "file(jobs/necromancer/necronomicon/necronomicon_talisman.json)",
       "jobs:necromancer": "file(jobs/necromancer/necromancer_description.json)",
       "weapons:necronomicon": "file(jobs/necromancer/necronomicon)",
-      "ai_pack:necromancer_combat": "file(ai/packs/necromancer_combat_ai_pack.json)"
+      "ai_pack:necromancer_combat": "file(ai/packs/necromancer_combat_ai_pack.json)",
+      "monster_tuning:undead:necromancer_undead": "file(data/monster_tuning/undead/necromancer_undead.json)"
    },
    "mixintos" : {
       "stonehearth/jobs/herbalist/recipes/recipes.json" : "file(recipes/recipes.json)",
