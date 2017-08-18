@@ -19,8 +19,8 @@
       "stonehearth:combat:ranged_attacks": [
          {
             "name": "riase_skeleton",
-            "effect": "combat_1h_heal",
-            "active_frame": 40,
+            "effect": "emote_roar",
+            "active_frame": 60,
             "target_armor_multiplier": 0.5,
             "cooldown": 10000,
             "priority": 0
